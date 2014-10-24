@@ -47,4 +47,10 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(this, NewTask.class);
         startActivity(intent);
     }
+    public void sendMental(View view) {
+        Intent intent = new Intent(this, DimensionMental.class);
+        startActivity(intent);
+    }
+
+
 }

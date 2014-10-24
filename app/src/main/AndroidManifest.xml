@@ -32,6 +32,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.primo5.habits.MainActivity" />
         </activity>
+        <activity
+            android:name=".DimensionMental"
+            android:label="@string/title_activity_dimension_mental"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.primo5.habits.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
