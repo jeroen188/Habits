@@ -40,6 +40,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.primo5.habits.MainActivity" />
         </activity>
+        <activity
+            android:name=".DimensionDetail"
+            android:label="@string/title_activity_dimension_detail" >
+        </activity>
     </application>
 
 </manifest>
