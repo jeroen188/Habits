@@ -52,6 +52,17 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(this, DimensionMental.class);
         startActivity(intent);
     }
-
+    public void sendSocial(View view) {
+        Intent intent = new Intent(this, DimensionSocial.class);
+        startActivity(intent);
+    }
+    public void sendPhysical(View view) {
+        Intent intent = new Intent(this, DimensionPhysical.class);
+        startActivity(intent);
+    }
+    public void sendSpirituality(View view) {
+        Intent intent = new Intent(this, DimensionSpirituality.class);
+        startActivity(intent);
+    }
 
 }
