@@ -1,8 +1,10 @@
 package com.primo5.habits;
 
 import android.app.Activity;
+import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,7 +59,7 @@ public class DailyTasks extends Activity {
 
     private void populateListViewFromDB() {
         Cursor cursor = myDb.getAllRows();
-
+        ListView myList = (ListView) findViewById(R.id.taskView);
         // Allow activity to manage lifetime of the cursor.
         // DEPRECATED! Runs on the UI thread, OK for small/short queries.
         startManagingCursor(cursor);
@@ -77,14 +79,27 @@ public class DailyTasks extends Activity {
                         fromFieldNames,			// DB Column names
                         toViewIDs				// View IDs to put information in
                 );
+       ///Bind view to simpleCursorAdapter
+        myCursorAdapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
+            public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
+                if (view.getId() == R.id.textMonth)
+                {
+                    String type = cursor.getString(columnIndex);
 
+                    ((View) view.getParent().getParent()).setBackgroundColor(Color.WHITE );    // I added this line
 
+                    if (type.equals("25-10-2014")) {
+                        ((View) view.getParent().getParent()).setBackgroundColor(Color.LTGRAY );
+                    }
+
+                }
+                return false;}
+
+        });
         // Set the adapter for the list view
-        ListView myList = (ListView) findViewById(R.id.taskView);
         myList.setAdapter(myCursorAdapter);
-
-
 }
+
 
     private void registerListClickCallback() {
         ListView myList = (ListView) findViewById(R.id.taskView);
