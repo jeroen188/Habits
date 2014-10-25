@@ -33,7 +33,7 @@
             android:layout_width="64dip"
             android:layout_height="64dip"
             android:src="@android:color/transparent"
-            app:cb_color="#ff906acc"
+            app:cb_color="#8B008B"
             app:cb_pressedRingWidth="8dip"
             android:layout_below="@+id/button"
             android:layout_centerHorizontal="true"
