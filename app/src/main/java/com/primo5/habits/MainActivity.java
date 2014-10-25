@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 
+// coding is challenging
 
 public class MainActivity extends Activity {
 
