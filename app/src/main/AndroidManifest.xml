@@ -44,6 +44,18 @@
             android:name=".DimensionDetail"
             android:label="@string/title_activity_dimension_detail" >
         </activity>
+        <activity
+            android:name=".DimensionSocial"
+            android:label="@string/title_activity_dimension_social" >
+        </activity>
+        <activity
+            android:name=".DimensionPhysical"
+            android:label="@string/title_activity_dimension_physical" >
+        </activity>
+        <activity
+            android:name=".DimensionSpirituality"
+            android:label="@string/title_activity_dimension_spirituality" >
+        </activity>
     </application>
 
 </manifest>
