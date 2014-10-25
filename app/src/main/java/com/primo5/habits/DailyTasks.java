@@ -9,6 +9,9 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class DailyTasks extends Activity {
 
@@ -97,8 +100,9 @@ public class DailyTasks extends Activity {
             String dimension = cursor.getString(DBAdapter.COL_DIMENSION);
             String month = cursor.getString(DBAdapter.COL_MONTH);
 
-            month += "!";
-            myDb.updateRow(idInDB, task, dimension, month);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            String currentDateandTime = sdf.format(new Date());
+            myDb.updateRow(idInDB, task, dimension, currentDateandTime);
         }
         cursor.close();
         populateListViewFromDB();
