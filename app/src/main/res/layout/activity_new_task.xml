@@ -25,12 +25,6 @@
         android:layout_height="wrap_content"
         android:hint="Dimension" />
 
-    <EditText
-        android:id="@+id/editMonth"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:hint="End Month" />
-
     <Button
         android:id="@+id/buttonCreateTask"
         android:layout_width="fill_parent"

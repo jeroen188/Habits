@@ -2,12 +2,19 @@ package com.primo5.habits;
 
 import android.app.Activity;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class DailyTasks extends Activity {
@@ -71,10 +78,13 @@ public class DailyTasks extends Activity {
                         toViewIDs				// View IDs to put information in
                 );
 
+
         // Set the adapter for the list view
         ListView myList = (ListView) findViewById(R.id.taskView);
         myList.setAdapter(myCursorAdapter);
-    }
+
+
+}
 
     private void registerListClickCallback() {
         ListView myList = (ListView) findViewById(R.id.taskView);
@@ -97,8 +107,9 @@ public class DailyTasks extends Activity {
             String dimension = cursor.getString(DBAdapter.COL_DIMENSION);
             String month = cursor.getString(DBAdapter.COL_MONTH);
 
-            month += "!";
-            myDb.updateRow(idInDB, task, dimension, month);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            String currentDateandTime = sdf.format(new Date());
+            myDb.updateRow(idInDB, task, dimension, currentDateandTime);
         }
         cursor.close();
         populateListViewFromDB();
