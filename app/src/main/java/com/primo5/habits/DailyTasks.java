@@ -66,11 +66,11 @@ public class DailyTasks extends Activity {
 
         // Setup mapping from cursor to view fields:
         String[] fromFieldNames = new String[]
-                {DBAdapter.KEY_TASK, DBAdapter.KEY_DIMENSION, DBAdapter.KEY_MONTH};
+                {DBAdapter.KEY_TASK, DBAdapter.KEY_DIMENSION, DBAdapter.KEY_MONTH, DBAdapter.KEY_TOTAL};
         int[] toViewIDs = new int[]
-                {R.id.textTask,     R.id.textDimension,           R.id.textMonth};
+                {R.id.textTask,     R.id.textDimension, R.id.textMonth, R.id.textTotal};
 
-        // Create adapter to may columns of the DB onto elemesnt in the UI.
+        // Create adapter to may columns of the DB onto elements in the UI.
         SimpleCursorAdapter myCursorAdapter =
                 new SimpleCursorAdapter(
                         this,		// Context
@@ -88,7 +88,10 @@ public class DailyTasks extends Activity {
 
                     ((View) view.getParent().getParent()).setBackgroundColor(Color.WHITE );    // I added this line
 
-                    if (type.equals("25-10-2014")) {
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                    String currentDateandTime = sdf.format(new Date());
+
+                    if (type.equals(currentDateandTime)) {
                         ((View) view.getParent().getParent()).setBackgroundColor(Color.LTGRAY );
                     }
 
@@ -121,10 +124,21 @@ public class DailyTasks extends Activity {
             String task = cursor.getString(DBAdapter.COL_TASK);
             String dimension = cursor.getString(DBAdapter.COL_DIMENSION);
             String month = cursor.getString(DBAdapter.COL_MONTH);
+            int total = cursor.getInt(DBAdapter.COL_TOTAL);
 
+
+            //what is today's date?
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
             String currentDateandTime = sdf.format(new Date());
-            myDb.updateRow(idInDB, task, dimension, currentDateandTime);
+
+            //check if update date is today. If not add +1 to total
+            if(month== currentDateandTime){
+                //do nothing
+            }
+            else {
+            month = month +1;
+            }
+            myDb.updateRow(idInDB, task, dimension, currentDateandTime, total);
         }
         cursor.close();
         populateListViewFromDB();

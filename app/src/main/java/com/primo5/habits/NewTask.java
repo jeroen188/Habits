@@ -44,7 +44,7 @@ public class NewTask extends Activity {
         String getDimension= dimension.getText().toString();
 
 
-        long newId = myDb.insertRow(getTask, getDimension, "none");
+        long newId = myDb.insertRow(getTask, getDimension, "none", 0);
         Toast.makeText(getApplicationContext(), "Task added!!! =)",
                 Toast.LENGTH_LONG).show();
 

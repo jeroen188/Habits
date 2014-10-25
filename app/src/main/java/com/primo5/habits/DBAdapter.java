@@ -29,20 +29,21 @@ public class DBAdapter {
     public static final String KEY_TASK = "task";
     public static final String KEY_DIMENSION = "dimension";
     public static final String KEY_MONTH = "month";
+    public static final String KEY_TOTAL = "total";
 
     // TODO: Setup your field numbers here (0 = KEY_ROWID, 1=...)
     public static final int COL_TASK = 1;
     public static final int COL_DIMENSION = 2;
     public static final int COL_MONTH = 3;
+    public static final int COL_TOTAL = 4;
 
-
-    public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_TASK, KEY_DIMENSION, KEY_MONTH};
+    public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_TASK, KEY_DIMENSION, KEY_MONTH, KEY_TOTAL};
 
     // DB info: it's name, and the table we are using (just one).
     public static final String DATABASE_NAME = "MyDb";
     public static final String DATABASE_TABLE = "mainTable";
     // Track DB version if a new version of your app changes the format.
-    public static final int DATABASE_VERSION = 4;
+    public static final int DATABASE_VERSION = 6;
 
     private static final String DATABASE_CREATE_SQL =
             "create table " + DATABASE_TABLE
@@ -60,7 +61,8 @@ public class DBAdapter {
                     // NOTE: All must be comma separated (end of line!) Last one must have NO comma!!
                     + KEY_TASK + " text not null, "
                     + KEY_DIMENSION + " text not null, "
-                    + KEY_MONTH + " string not null"
+                    + KEY_MONTH + " string not null, "
+                    + KEY_TOTAL + " integer not null"
 
                     // Rest  of creation:
                     + ");";
@@ -92,7 +94,7 @@ public class DBAdapter {
     }
 
     // Add a new set of values to the database.
-    public long insertRow(String task, String dimension, String month) {
+    public long insertRow(String task, String dimension, String month, int total) {
 		/*
 		 * CHANGE 3:
 		 */
@@ -103,6 +105,7 @@ public class DBAdapter {
         initialValues.put(KEY_TASK, task);
         initialValues.put(KEY_DIMENSION, dimension);
         initialValues.put(KEY_MONTH, month);
+        initialValues.put(KEY_TOTAL, total);
 
         // Insert it into the database.
         return db.insert(DATABASE_TABLE, null, initialValues);
@@ -148,7 +151,7 @@ public class DBAdapter {
     }
 
     // Change an existing row to be equal to new data.
-    public boolean updateRow(long rowId, String task, String dimension, String month) {
+    public boolean updateRow(long rowId, String task, String dimension, String month, int total) {
         String where = KEY_ROWID + "=" + rowId;
 
 		/*
@@ -161,6 +164,7 @@ public class DBAdapter {
         newValues.put(KEY_TASK, task);
         newValues.put(KEY_DIMENSION, dimension);
         newValues.put(KEY_MONTH, month);
+        newValues.put(KEY_TOTAL, total);
 
         // Insert it into the database.
         return db.update(DATABASE_TABLE, newValues, where, null) != 0;
