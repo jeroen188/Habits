@@ -66,9 +66,9 @@ public class DailyTasks extends Activity {
 
         // Setup mapping from cursor to view fields:
         String[] fromFieldNames = new String[]
-                {DBAdapter.KEY_TASK, DBAdapter.KEY_DIMENSION, DBAdapter.KEY_MONTH, DBAdapter.KEY_TOTAL};
+                {DBAdapter.KEY_TASK, DBAdapter.KEY_DIMENSION, DBAdapter.KEY_CLICKED, DBAdapter.KEY_TOTAL, DBAdapter.KEY_STREAK};
         int[] toViewIDs = new int[]
-                {R.id.textTask,     R.id.textDimension, R.id.textMonth, R.id.textTotal};
+                {R.id.textTask,     R.id.textDimension, R.id.textClicked, R.id.textTotal, R.id.textStreak};
 
         // Create adapter to may columns of the DB onto elements in the UI.
         SimpleCursorAdapter myCursorAdapter =
@@ -82,11 +82,11 @@ public class DailyTasks extends Activity {
        ///Bind view to simpleCursorAdapter
         myCursorAdapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
             public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
-                if (view.getId() == R.id.textMonth)
+                if (view.getId() == R.id.textClicked)
                 {
                     String type = cursor.getString(columnIndex);
 
-                    ((View) view.getParent().getParent()).setBackgroundColor(Color.WHITE );    // I added this line
+                    ((View) view.getParent().getParent()).setBackgroundColor(Color.WHITE );
 
                     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
                     String currentDateandTime = sdf.format(new Date());
@@ -123,22 +123,20 @@ public class DailyTasks extends Activity {
             long idDB = cursor.getLong(DBAdapter.COL_ROWID);
             String task = cursor.getString(DBAdapter.COL_TASK);
             String dimension = cursor.getString(DBAdapter.COL_DIMENSION);
-            String month = cursor.getString(DBAdapter.COL_MONTH);
+            String clicked = cursor.getString(DBAdapter.COL_CLICKED);
             int total = cursor.getInt(DBAdapter.COL_TOTAL);
-
+            int streak = cursor.getInt(DBAdapter.COL_STREAK);
+            String description = cursor.getString(DBAdapter.COL_DESCRIPTION);
 
             //what is today's date?
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
             String currentDateandTime = sdf.format(new Date());
 
             //check if update date is today. If not add +1 to total
-            if(month== currentDateandTime){
-                //do nothing
+            if(clicked!= currentDateandTime){
+                total = total +1;
             }
-            else {
-            month = month +1;
-            }
-            myDb.updateRow(idInDB, task, dimension, currentDateandTime, total);
+            myDb.updateRow(idInDB, task, dimension, currentDateandTime, total, streak, clicked);
         }
         cursor.close();
         populateListViewFromDB();
@@ -150,12 +148,12 @@ public class DailyTasks extends Activity {
             long idDB = cursor.getLong(DBAdapter.COL_ROWID);
             String task = cursor.getString(DBAdapter.COL_TASK);
             String dimension = cursor.getString(DBAdapter.COL_DIMENSION);
-            String month = cursor.getString(DBAdapter.COL_MONTH);
+            String description = cursor.getString(DBAdapter.COL_DESCRIPTION);
 
             String message = "ID: " + idDB + "\n"
                     + "Task: " + task + "\n"
                     + "Dimension: " + dimension + "\n"
-                    + "Month: " + month;
+                    + "Description: " + description;
             Toast.makeText(DailyTasks.this, message, Toast.LENGTH_LONG).show();
         }
         cursor.close();
