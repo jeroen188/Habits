@@ -20,5 +20,9 @@ public class DimensionMental extends Activity {
         Intent intent = new Intent(this, DimensionMental.class);
         startActivity(intent);
     }
+    public void addTask(View view) {
+        Intent intent = new Intent(this, NewTask.class);
+        startActivity(intent);
+    }
 
 }

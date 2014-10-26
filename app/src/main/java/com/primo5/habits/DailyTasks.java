@@ -18,7 +18,7 @@ import java.util.Date;
 
 
 public class DailyTasks extends Activity {
-
+//
     DBAdapter myDb;
 
     @Override

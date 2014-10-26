@@ -20,5 +20,9 @@ public class DimensionPhysical extends Activity {
         Intent intent = new Intent(this, DimensionPhysical.class);
         startActivity(intent);
     }
+    public void addTask(View view) {
+        Intent intent = new Intent(this, NewTask.class);
+        startActivity(intent);
+    }
 
 }
