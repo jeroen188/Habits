@@ -136,7 +136,7 @@ public class DailyTasks extends Activity {
             if(clicked!= currentDateandTime){
                 total = total +1;
             }
-            myDb.updateRow(idInDB, task, dimension, currentDateandTime, total, streak, clicked);
+            myDb.updateRow(idInDB, task, dimension, currentDateandTime, total, streak, description);
         }
         cursor.close();
         populateListViewFromDB();
