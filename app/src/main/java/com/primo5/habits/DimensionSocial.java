@@ -20,6 +20,10 @@ public class DimensionSocial extends Activity {
         Intent intent = new Intent(this, DimensionSocial.class);
         startActivity(intent);
     }
+    public void addTask(View view) {
+        Intent intent = new Intent(this, NewTask.class);
+        startActivity(intent);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -36,5 +36,8 @@
     <string name="title_activity_dimension_social">DimensionSocial</string>
     <string name="title_activity_dimension_physical">DimensionPhysical</string>
     <string name="title_activity_dimension_spirituality">DimensionSpirituality</string>
+    //Strings About
+    <string name="forlife">Header</string>
+    <string name="title_activity_about">About</string>
 
 </resources>

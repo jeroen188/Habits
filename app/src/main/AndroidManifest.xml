@@ -59,6 +59,11 @@
             android:label="@string/title_activity_dimension_spirituality"
             android:parentActivityName=".MainActivity">
         </activity>
+        <activity
+            android:name=".About"
+            android:label="About"
+            android:parentActivityName=".MainActivity">
+        </activity>
     </application>
 
 </manifest>
