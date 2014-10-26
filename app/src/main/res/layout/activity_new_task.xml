@@ -15,21 +15,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
-
         <requestFocus />
     </EditText>
 
-    <EditText
+    <Spinner
         android:id="@+id/editDimension"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="Dimension" />
+        android:entries="@array/dimension_arrays"
+        android:prompt="@string/dimension_prompt" />
 
-    <EditText
+    <Spinner
         android:id="@+id/editSubDimension"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="Subdimension" />
+        android:entries="@array/subdimension_arrays"
+        android:prompt="@string/subdimension_prompt" />
 
     <EditText
         android:id="@+id/editDescription"
@@ -45,4 +46,4 @@
         android:layout_marginBottom="60dp"
         android:onClick="Onclick_task"/>
 
-</LinearLayout>
+ </LinearLayout>
