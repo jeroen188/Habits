@@ -28,21 +28,26 @@ public class DBAdapter {
     // TODO: Setup your fields here:
     public static final String KEY_TASK = "task";
     public static final String KEY_DIMENSION = "dimension";
-    public static final String KEY_MONTH = "month";
+    public static final String KEY_CLICKED = "clicked";
+    public static final String KEY_TOTAL = "total";
+    public static final String KEY_STREAK = "streak";
+    public static final String KEY_DESCRIPTION = "description";
 
     // TODO: Setup your field numbers here (0 = KEY_ROWID, 1=...)
     public static final int COL_TASK = 1;
     public static final int COL_DIMENSION = 2;
-    public static final int COL_MONTH = 3;
+    public static final int COL_CLICKED = 3;
+    public static final int COL_TOTAL = 4;
+    public static final int COL_STREAK = 5;
+    public static final int COL_DESCRIPTION = 6;
 
-
-    public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_TASK, KEY_DIMENSION, KEY_MONTH};
+    public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_TASK, KEY_DIMENSION, KEY_CLICKED, KEY_TOTAL, KEY_STREAK, KEY_DESCRIPTION};
 
     // DB info: it's name, and the table we are using (just one).
     public static final String DATABASE_NAME = "MyDb";
     public static final String DATABASE_TABLE = "mainTable";
     // Track DB version if a new version of your app changes the format.
-    public static final int DATABASE_VERSION = 4;
+    public static final int DATABASE_VERSION = 9;
 
     private static final String DATABASE_CREATE_SQL =
             "create table " + DATABASE_TABLE
@@ -60,7 +65,10 @@ public class DBAdapter {
                     // NOTE: All must be comma separated (end of line!) Last one must have NO comma!!
                     + KEY_TASK + " text not null, "
                     + KEY_DIMENSION + " text not null, "
-                    + KEY_MONTH + " string not null"
+                    + KEY_CLICKED + " string not null, "
+                    + KEY_TOTAL + " integer not null, "
+                    + KEY_STREAK + " integer not null, "
+                    + KEY_DESCRIPTION + " string not null"
 
                     // Rest  of creation:
                     + ");";
@@ -92,7 +100,7 @@ public class DBAdapter {
     }
 
     // Add a new set of values to the database.
-    public long insertRow(String task, String dimension, String month) {
+    public long insertRow(String task, String dimension, String clicked, int total, int streak, String description) {
 		/*
 		 * CHANGE 3:
 		 */
@@ -102,7 +110,10 @@ public class DBAdapter {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_TASK, task);
         initialValues.put(KEY_DIMENSION, dimension);
-        initialValues.put(KEY_MONTH, month);
+        initialValues.put(KEY_CLICKED, clicked);
+        initialValues.put(KEY_TOTAL, total);
+        initialValues.put(KEY_STREAK, streak);
+        initialValues.put(KEY_DESCRIPTION, description);
 
         // Insert it into the database.
         return db.insert(DATABASE_TABLE, null, initialValues);
@@ -148,7 +159,7 @@ public class DBAdapter {
     }
 
     // Change an existing row to be equal to new data.
-    public boolean updateRow(long rowId, String task, String dimension, String month) {
+    public boolean updateRow(long rowId, String task, String dimension, String clicked, int total, int streak, String description) {
         String where = KEY_ROWID + "=" + rowId;
 
 		/*
@@ -160,7 +171,10 @@ public class DBAdapter {
         ContentValues newValues = new ContentValues();
         newValues.put(KEY_TASK, task);
         newValues.put(KEY_DIMENSION, dimension);
-        newValues.put(KEY_MONTH, month);
+        newValues.put(KEY_CLICKED, clicked);
+        newValues.put(KEY_TOTAL, total);
+        newValues.put(KEY_STREAK, streak);
+        newValues.put(KEY_DESCRIPTION, description);
 
         // Insert it into the database.
         return db.update(DATABASE_TABLE, newValues, where, null) != 0;

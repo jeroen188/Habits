@@ -38,13 +38,15 @@ public class NewTask extends Activity {
     public void Onclick_task(View v) {
         EditText task = (EditText)findViewById(R.id.editTask);
         EditText dimension = (EditText)findViewById(R.id.editDimension);
+        EditText description = (EditText)findViewById(R.id.editDescription);
 
 
         String getTask = task.getText().toString();
         String getDimension= dimension.getText().toString();
+        String getDescription= description.getText().toString();
 
 
-        long newId = myDb.insertRow(getTask, getDimension, "none");
+        myDb.insertRow(getTask, getDimension, "", 1, 1, getDescription);
         Toast.makeText(getApplicationContext(), "Task added!!! =)",
                 Toast.LENGTH_LONG).show();
 

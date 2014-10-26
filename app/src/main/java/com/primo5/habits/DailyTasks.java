@@ -1,8 +1,10 @@
 package com.primo5.habits;
 
 import android.app.Activity;
+import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,18 +59,18 @@ public class DailyTasks extends Activity {
 
     private void populateListViewFromDB() {
         Cursor cursor = myDb.getAllRows();
-
+        ListView myList = (ListView) findViewById(R.id.taskView);
         // Allow activity to manage lifetime of the cursor.
         // DEPRECATED! Runs on the UI thread, OK for small/short queries.
         startManagingCursor(cursor);
 
         // Setup mapping from cursor to view fields:
         String[] fromFieldNames = new String[]
-                {DBAdapter.KEY_TASK, DBAdapter.KEY_DIMENSION, DBAdapter.KEY_MONTH};
+                {DBAdapter.KEY_TASK, DBAdapter.KEY_DIMENSION, DBAdapter.KEY_CLICKED, DBAdapter.KEY_TOTAL, DBAdapter.KEY_STREAK};
         int[] toViewIDs = new int[]
-                {R.id.textTask,     R.id.textDimension,           R.id.textMonth};
+                {R.id.textTask,     R.id.textDimension, R.id.textClicked, R.id.textTotal, R.id.textStreak};
 
-        // Create adapter to may columns of the DB onto elemesnt in the UI.
+        // Create adapter to may columns of the DB onto elements in the UI.
         SimpleCursorAdapter myCursorAdapter =
                 new SimpleCursorAdapter(
                         this,		// Context
@@ -77,14 +79,30 @@ public class DailyTasks extends Activity {
                         fromFieldNames,			// DB Column names
                         toViewIDs				// View IDs to put information in
                 );
+       ///Bind view to simpleCursorAdapter
+        myCursorAdapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
+            public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
+                if (view.getId() == R.id.textClicked)
+                {
+                    String type = cursor.getString(columnIndex);
 
+                    ((View) view.getParent().getParent()).setBackgroundColor(Color.WHITE );
 
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                    String currentDateandTime = sdf.format(new Date());
+
+                    if (type.equals(currentDateandTime)) {
+                        ((View) view.getParent().getParent()).setBackgroundColor(Color.LTGRAY );
+                    }
+
+                }
+                return false;}
+
+        });
         // Set the adapter for the list view
-        ListView myList = (ListView) findViewById(R.id.taskView);
         myList.setAdapter(myCursorAdapter);
-
-
 }
+
 
     private void registerListClickCallback() {
         ListView myList = (ListView) findViewById(R.id.taskView);
@@ -105,11 +123,20 @@ public class DailyTasks extends Activity {
             long idDB = cursor.getLong(DBAdapter.COL_ROWID);
             String task = cursor.getString(DBAdapter.COL_TASK);
             String dimension = cursor.getString(DBAdapter.COL_DIMENSION);
-            String month = cursor.getString(DBAdapter.COL_MONTH);
+            String clicked = cursor.getString(DBAdapter.COL_CLICKED);
+            int total = cursor.getInt(DBAdapter.COL_TOTAL);
+            int streak = cursor.getInt(DBAdapter.COL_STREAK);
+            String description = cursor.getString(DBAdapter.COL_DESCRIPTION);
 
+            //what is today's date?
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
             String currentDateandTime = sdf.format(new Date());
-            myDb.updateRow(idInDB, task, dimension, currentDateandTime);
+
+            //check if update date is today. If not add +1 to total
+            if(clicked!= currentDateandTime){
+                total = total +1;
+            }
+            myDb.updateRow(idInDB, task, dimension, currentDateandTime, total, streak, description);
         }
         cursor.close();
         populateListViewFromDB();
@@ -121,12 +148,12 @@ public class DailyTasks extends Activity {
             long idDB = cursor.getLong(DBAdapter.COL_ROWID);
             String task = cursor.getString(DBAdapter.COL_TASK);
             String dimension = cursor.getString(DBAdapter.COL_DIMENSION);
-            String month = cursor.getString(DBAdapter.COL_MONTH);
+            String description = cursor.getString(DBAdapter.COL_DESCRIPTION);
 
             String message = "ID: " + idDB + "\n"
                     + "Task: " + task + "\n"
                     + "Dimension: " + dimension + "\n"
-                    + "Month: " + month;
+                    + "Description: " + description;
             Toast.makeText(DailyTasks.this, message, Toast.LENGTH_LONG).show();
         }
         cursor.close();
