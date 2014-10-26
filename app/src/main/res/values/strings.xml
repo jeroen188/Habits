@@ -40,4 +40,23 @@
     <string name="forlife">Header</string>
     <string name="title_activity_about">About</string>
 
+
+
+    <string-array name="dimension_arrays">
+        <item>Physical</item>
+        <item>Spiritual</item>
+        <item>Mental</item>
+        <item>Social</item>
+    </string-array>
+    <string name="dimension_prompt">Choose a dimension</string>
+
+
+    <string-array name="subdimension_arrays">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string name="subdimension_prompt">Choose a dimension</string>
+
 </resources>

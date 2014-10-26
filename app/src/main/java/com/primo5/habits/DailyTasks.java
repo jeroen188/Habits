@@ -15,8 +15,19 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class DailyTasks extends Activity {
@@ -66,9 +77,9 @@ public class DailyTasks extends Activity {
 
         // Setup mapping from cursor to view fields:
         String[] fromFieldNames = new String[]
-                {DBAdapter.KEY_TASK, DBAdapter.KEY_DIMENSION, DBAdapter.KEY_CLICKED, DBAdapter.KEY_TOTAL, DBAdapter.KEY_STREAK};
+                {DBAdapter.KEY_TASK, DBAdapter.KEY_DIMENSION, DBAdapter.KEY_CLICKED, DBAdapter.KEY_TOTAL, DBAdapter.KEY_STREAK, DBAdapter.KEY_SUBDIMENSION};
         int[] toViewIDs = new int[]
-                {R.id.textTask,     R.id.textDimension, R.id.textClicked, R.id.textTotal, R.id.textStreak};
+                {R.id.textTask,     R.id.textDimension, R.id.textClicked, R.id.textTotal, R.id.textStreak, R.id.textSubdimension};
 
         // Create adapter to may columns of the DB onto elements in the UI.
         SimpleCursorAdapter myCursorAdapter =
@@ -117,7 +128,7 @@ public class DailyTasks extends Activity {
         });
     }
 
-    private void updateItemForId(long idInDB) {
+      private void updateItemForId(long idInDB) {
         Cursor cursor = myDb.getRow(idInDB);
         if (cursor.moveToFirst()) {
             long idDB = cursor.getLong(DBAdapter.COL_ROWID);
@@ -127,16 +138,42 @@ public class DailyTasks extends Activity {
             int total = cursor.getInt(DBAdapter.COL_TOTAL);
             int streak = cursor.getInt(DBAdapter.COL_STREAK);
             String description = cursor.getString(DBAdapter.COL_DESCRIPTION);
+            String subdimension = cursor.getString(DBAdapter.COL_SUBDIMENSION);
 
-            //what is today's date?
+            //Define total checks based on todays time and the last update.
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-            String currentDateandTime = sdf.format(new Date());
+            String currentDateandTime =  new Date().toString();
+            Date test;
+            Date test2;
+            Long milliseconds = 0l;
+            Long milliseconds2= 0l;
 
-            //check if update date is today. If not add +1 to total
-            if(clicked!= currentDateandTime){
-                total = total +1;
+            try {
+                test = sdf.parse(currentDateandTime);
+                test2 = sdf.parse(clicked);
+                milliseconds = test.getTime();
+                milliseconds2= test2.getTime();
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
-            myDb.updateRow(idInDB, task, dimension, currentDateandTime, total, streak, description);
+
+            if(!milliseconds.equals(milliseconds2))
+            {
+                total = total + 1;
+            }
+            if(milliseconds - milliseconds2 == 1 )
+            {
+                streak = streak +1;
+            }
+            if(milliseconds - milliseconds2 > 1 )
+            {
+                streak = 0;
+            }
+
+            SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+            String datetoday = df.format(new Date());
+
+            myDb.updateRow(idInDB, task, dimension, datetoday, total, streak, description, subdimension);
         }
         cursor.close();
         populateListViewFromDB();
@@ -149,14 +186,58 @@ public class DailyTasks extends Activity {
             String task = cursor.getString(DBAdapter.COL_TASK);
             String dimension = cursor.getString(DBAdapter.COL_DIMENSION);
             String description = cursor.getString(DBAdapter.COL_DESCRIPTION);
+            String subdimension = cursor.getString(DBAdapter.COL_SUBDIMENSION);
 
             String message = "ID: " + idDB + "\n"
                     + "Task: " + task + "\n"
                     + "Dimension: " + dimension + "\n"
+                    + "Subdimension: " + subdimension + "\n"
                     + "Description: " + description;
             Toast.makeText(DailyTasks.this, message, Toast.LENGTH_LONG).show();
         }
         cursor.close();
+    }
+
+
+   // We don't use the code below but it might become useful in the future so I keep it there
+
+    public void stringDate(String tempdate) throws ParseException{
+
+        DateFormat myDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Date tempDate = myDateFormat.parse("24/12/2011");
+    }
+
+
+    public void printDifference(Date startDate, Date endDate){
+
+        //milliseconds
+        long different = endDate.getTime() - startDate.getTime();
+
+        System.out.println("startDate : " + startDate);
+        System.out.println("endDate : "+ endDate);
+        System.out.println("different : " + different);
+
+        long secondsInMilli = 1000;
+        long minutesInMilli = secondsInMilli * 60;
+        long hoursInMilli = minutesInMilli * 60;
+        long daysInMilli = hoursInMilli * 24;
+
+        long elapsedDays = different / daysInMilli;
+        different = different % daysInMilli;
+
+        long elapsedHours = different / hoursInMilli;
+        different = different % hoursInMilli;
+
+        long elapsedMinutes = different / minutesInMilli;
+        different = different % minutesInMilli;
+
+        long elapsedSeconds = different / secondsInMilli;
+
+        System.out.printf(
+                "%d days, %d hours, %d minutes, %d seconds%n",
+                elapsedDays,
+                elapsedHours, elapsedMinutes, elapsedSeconds);
+
     }
 }
 
