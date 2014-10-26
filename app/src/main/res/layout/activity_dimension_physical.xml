@@ -8,14 +8,6 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.primo5.habits.DimensionPhysical"
     android:background="#90EE90">
-
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/taskView"
-        android:layout_below="@+id/space"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
     
     <TextView
         android:layout_width="wrap_content"
@@ -59,7 +51,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageButton2"
+        android:id="@+id/plussign"
         android:src="@drawable/plussign"
         android:adjustViewBounds="false"
         android:baselineAlignBottom="false"
@@ -67,15 +59,14 @@
         android:clickable="false"
         android:focusable="false"
         android:onClick="addTask"
-        android:layout_toEndOf="@+id/physicalHeader"
-        android:layout_alignTop="@+id/physicalStressControl"
-        android:layout_toRightOf="@+id/physicalHeader" />
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageButton2"
-        android:src="@drawable/facebook"
+        android:id="@+id/Facebook"
+        android:src="@drawable/Facebook"
         android:adjustViewBounds="false"
         android:baselineAlignBottom="false"
         android:cropToPadding="false"
@@ -86,5 +77,21 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_above="@+id/physicalStressControl" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/twitter"
+        android:src="@drawable/twitter"
+        android:adjustViewBounds="false"
+        android:baselineAlignBottom="false"
+        android:cropToPadding="false"
+        android:clickable="false"
+        android:focusable="false"
+        android:layout_toEndOf="@+id/mentalHeader"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_toLeftOf="@+id/Facebook"
+        android:layout_alignParentEnd="false" />
 
 </RelativeLayout>
