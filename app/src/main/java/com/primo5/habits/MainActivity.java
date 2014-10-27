@@ -52,5 +52,12 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+    public void sendBalance (View view)
+    {
+        PieGraph pie = new PieGraph();
+        Intent lineIntent = pie.getIntent(this);
+        startActivity(lineIntent);
+    }
+
 
 }
