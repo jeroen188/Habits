@@ -8,16 +8,16 @@ import android.view.MenuItem;
 import android.view.View;
 
 
-public class DimensionMental extends Activity {
+public class DimensionPhysical extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dimension_mental);
+        setContentView(R.layout.activity_dimension_physical);
     }
 
     public void writingDetail(View view) {
-        Intent intent = new Intent(this, DimensionMental.class);
+        Intent intent = new Intent(this, DimensionPhysical.class);
         startActivity(intent);
     }
     public void addTask(View view) {

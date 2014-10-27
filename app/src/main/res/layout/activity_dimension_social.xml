@@ -6,65 +6,55 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.primo5.habits.DimensionMental"
-    android:background="#FFB266">
+    tools:context="com.primo5.habits.DimensionSocial"
+    android:background="#F0E68C">
 
-    
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/mentalHeader"
-        android:id="@+id/mentalHeader"
+        android:text="@string/socialHeader"
+        android:id="@+id/socialHeader"
+        android:layout_toEndOf="@+id/physicalStressControl"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/mentalReading"
-        android:layout_toEndOf="@+id/mentalReading"
-        android:layout_marginLeft="70dp"/>
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/mentalPlanning"
-        android:id="@+id/mentalPlanning"
+        android:text="@string/socialFamily"
+        android:id="@+id/socialFamily"
+        android:layout_alignTop="@+id/socialHeader"
         android:layout_above="@+id/mentalWork"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="65dp"
+        android:layout_marginTop="96dp"
         android:onClick="writingDetail" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/mentalWork"
-        android:id="@+id/mentalWork"
-        android:layout_above="@+id/mentalWriting"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="65dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/mentalWriting"
-        android:id="@+id/mentalWriting"
-        android:layout_above="@+id/mentalReading"
+        android:text="Friends"
+        android:id="@+id/socialFriends"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="61dp" />
+        android:layout_marginBottom="65dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/mentalReading"
-        android:id="@+id/mentalReading"
+        android:text="Leisure"
+        android:id="@+id/socialLeisure"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="107dp" />
+        android:layout_marginBottom="107dp"  />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -80,8 +70,6 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true" />
 
-
-
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -94,7 +82,7 @@
         android:focusable="false"
         android:layout_toEndOf="@+id/plussign"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/mentalReading" />
+        android:layout_toRightOf="@+id/socialLeisure" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -106,7 +94,7 @@
         android:cropToPadding="false"
         android:clickable="false"
         android:focusable="false"
-        android:layout_toEndOf="@+id/mentalHeader"
+        android:layout_toEndOf="@+id/physicalHeader"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_toLeftOf="@+id/Facebook"

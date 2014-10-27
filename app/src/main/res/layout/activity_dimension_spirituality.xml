@@ -6,70 +6,53 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.primo5.habits.DimensionMental"
-    android:background="#FFB266">
+    tools:context="com.primo5.habits.DimensionSpirituality"
+    android:background="#ADD8E6">
 
-    
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/mentalHeader"
-        android:id="@+id/mentalHeader"
+        android:text="Spirituality"
+        android:id="@+id/spiritualityHeader"
+        android:layout_toEndOf="@+id/physicalStressControl"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/mentalReading"
-        android:layout_toEndOf="@+id/mentalReading"
-        android:layout_marginLeft="70dp"/>
-
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/mentalPlanning"
-        android:id="@+id/mentalPlanning"
-        android:layout_above="@+id/mentalWork"
+        android:text="Pray"
+        android:id="@+id/spiritualityPray"
+        android:layout_alignTop="@+id/spiritualityHeader"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="65dp"
-        android:onClick="writingDetail" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/mentalWork"
-        android:id="@+id/mentalWork"
-        android:layout_above="@+id/mentalWriting"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="65dp" />
-
+        android:layout_marginTop="96dp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/mentalWriting"
-        android:id="@+id/mentalWriting"
-        android:layout_above="@+id/mentalReading"
+        android:id="@+id/mentalPlanning"
+        android:layout_above="@+id/mentalWriting"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="61dp" />
-
+        android:layout_marginBottom="65dp"
+        android:onClick="writingDetail"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/mentalReading"
-        android:id="@+id/mentalReading"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="107dp" />
+        android:id="@+id/textView" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/plussign"
+        android:id="@+id/imageButton2"
         android:src="@drawable/plussign"
         android:adjustViewBounds="false"
         android:baselineAlignBottom="false"
@@ -77,24 +60,27 @@
         android:clickable="false"
         android:focusable="false"
         android:onClick="addTask"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" />
-
-
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/spiritualityHeader"
+        android:layout_toEndOf="@+id/spiritualityHeader" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/Facebook"
+        android:id="@+id/imageButton2"
         android:src="@drawable/Facebook"
         android:adjustViewBounds="false"
         android:baselineAlignBottom="false"
         android:cropToPadding="false"
         android:clickable="false"
         android:focusable="false"
-        android:layout_toEndOf="@+id/plussign"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/mentalReading" />
+        android:layout_toEndOf="@+id/mentalPlanning"
+        android:layout_toStartOf="@+id/imageButton2"
+        android:layout_below="@+id/spiritualityPray"
+        android:layout_alignLeft="@+id/spiritualityHeader"
+        android:layout_alignStart="@+id/spiritualityHeader" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -111,5 +97,6 @@
         android:layout_alignParentRight="true"
         android:layout_toLeftOf="@+id/Facebook"
         android:layout_alignParentEnd="false" />
+
 
 </RelativeLayout>

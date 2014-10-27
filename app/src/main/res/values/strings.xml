@@ -7,13 +7,38 @@
     <string name="title_activity_daily_tasks">DailyTasks</string>
     <string name="title_activity_new_task">NewTask</string>
     <string name="title_activity_dimension_mental">DimensionMental</string>
-    // Strings Mental Dimension    <string name="mentalHeader">Mental</string>
+    // Strings Mental Dimension
+    <string name="mentalHeader">Mental</string>
     <string name="mentalPlanning">Planning</string>
     <string name="mentalWork">Work</string>
     <string name="mentalWriting">Writing</string>
     <string name="mentalReading">Reading</string>
-    // Strings Daily Task Overview    <string name="dailyOverview">Your tasks for today</string>
+    // Strings Physical Dimension
+    <string name="physicalHeader">Physical</string>
+    <string name="physicalNutrition">Nutrition</string>
+    <string name="physicalExercise">Exercise</string>
+    <string name="physicalStressControl">StressControl</string>
+    // Strings Social Dimension
+    <string name="socialHeader">Social</string>
+    <string name="socialFamily">Family</string>
+    <string name="socialFriends">Friends</string>
+    <string name="socialLeisure">Leisure</string>
+    // Strings Spirituality
+    <string name="spiritualityHeader">Header</string>
+    <string name="spiritualityPray">Pray</string>
+    <string name="spiritualityMeditation">Meditation</string>
+    <string name="spiritualityMusic">Music</string>
+    <string name="spiritualityLiterature">Literature</string>
+    <string name="spiritualityNature">Nature</string>
+    // Strings Daily Task Overview
+    <string name="dailyOverview">Your tasks for today</string>
     <string name="title_activity_dimension_detail">DimensionDetail</string>
+    <string name="title_activity_dimension_social">DimensionSocial</string>
+    <string name="title_activity_dimension_physical">DimensionPhysical</string>
+    <string name="title_activity_dimension_spirituality">DimensionSpirituality</string>
+    //Strings About
+    <string name="forlife">Header</string>
+    <string name="title_activity_about">About</string>
 
 
 
