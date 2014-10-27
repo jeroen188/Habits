@@ -52,6 +52,26 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+    public void sendPhysical(View view) {
+        Intent intent = new Intent(this, DimensionPhysical.class);
+        startActivity(intent);
+    }
+
+    public void sendSpirituality(View view) {
+        Intent intent = new Intent(this, DimensionSpirituality.class);
+        startActivity(intent);
+    }
+
+    public void sendSocial(View view) {
+        Intent intent = new Intent(this, DimensionSocial.class);
+        startActivity(intent);
+    }
+
+    public void sendAbout(View view) {
+        Intent intent = new Intent(this, About.class);
+        startActivity(intent);
+    }
+
     public void sendBalance (View view)
     {
         PieGraph pie = new PieGraph();

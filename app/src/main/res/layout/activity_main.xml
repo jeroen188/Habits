@@ -75,14 +75,6 @@
         android:background="#ffccc507"
         android:onClick="sendSocial"/>
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/add_ticket"
-        android:onClick="addTask"/>
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -99,6 +91,16 @@
         android:clickable="false"
         android:focusable="false"
         android:onClick="sendAbout"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton3"
+        android:src="@drawable/ic_action_favorite"
+        android:onClick="sendBalance"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/button4"
+        android:layout_toStartOf="@+id/button4" />
 
 
 </RelativeLayout>
