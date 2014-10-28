@@ -7,35 +7,32 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity"
-    android:background="#00ffffff">
+    tools:context=".MainActivity">
 
     <Button
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/button"
     android:layout_gravity="right|top"
-    android:layout_marginTop="118dp"
-    android:layout_alignParentTop="true"
-    android:layout_toLeftOf="@+id/frameLayout"
+        android:layout_toLeftOf="@+id/frameLayout"
     android:layout_toStartOf="@+id/frameLayout"
-    android:background="#90EE90"
-    android:onClick="sendPhysical"/>
+    android:background="#ff17cc32"
+    android:onClick="sendPhysical"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_alignStart="@+id/button2" />
 
     <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button"
         android:id="@+id/frameLayout"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="false"
-        android:layout_alignParentTop="false">
+        android:layout_alignLeft="@+id/imageButton"
+        android:layout_alignStart="@+id/imageButton">
 
         <at.markushi.ui.CircleButton
             android:layout_width="64dip"
-            android:layout_height="64dip"
+            android:layout_height="101dp"
             android:src="@android:color/transparent"
             app:cb_color="#8B008B"
             app:cb_pressedRingWidth="8dip"
@@ -50,59 +47,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button2"
-        android:layout_below="@+id/frameLayout"
         android:layout_toLeftOf="@+id/frameLayout"
         android:layout_toStartOf="@+id/frameLayout"
-        android:background="#FFB266"
-        android:onClick="sendMental"/>
+        android:background="#ffcc8b1c"
+        android:onClick="sendMental"
+        android:layout_alignLeft="@+id/button"
+        android:layout_alignStart="@+id/button"
+        android:layout_alignParentTop="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button3"
-        android:layout_above="@+id/frameLayout"
-        android:layout_toRightOf="@+id/frameLayout"
         android:layout_toEndOf="@+id/frameLayout"
-        android:background="#ADD8E6"
-        android:onClick="sendSpirituality"/>
+        android:background="#ff2c7bcc"
+        android:onClick="sendSpirituality"
+        android:layout_toRightOf="@+id/frameLayout"
+        android:layout_above="@+id/frameLayout" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button4"
-        android:layout_alignTop="@+id/button2"
-        android:layout_toRightOf="@+id/frameLayout"
         android:layout_toEndOf="@+id/frameLayout"
-        android:background="#F0E68C"
-        android:onClick="sendSocial"/>
-
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButton2"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/forlife"
-        android:layout_above="@+id/button3"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:adjustViewBounds="false"
-        android:baselineAlignBottom="false"
-        android:cropToPadding="false"
-        android:clickable="false"
-        android:focusable="false"
-        android:onClick="sendAbout"
-        android:background="#00ffffff" />
+        android:background="#ffccc507"
+        android:onClick="sendSocial"
+        android:layout_toRightOf="@+id/frameLayout"
+        android:layout_alignParentTop="true" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageButton3"
-        android:src="@drawable/ic_action_favorite"
-        android:onClick="sendBalance"
+        android:id="@+id/imageButton"
         android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/button4"
-        android:layout_toStartOf="@+id/button4" />
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/add_ticket"
+        android:onClick="addTask"/>
 
 
 </RelativeLayout>
