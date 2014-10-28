@@ -9,6 +9,9 @@ import android.util.Log;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 // TO USE:
 // Change the package (at top) to match your project.
@@ -143,7 +146,7 @@ public class DBAdapter {
     }
 
     // Return all data in the database.
-    public Cursor getAllRows() {
+    public Cursor getAllRows2() {
         String where = null;
         Cursor c = 	db.query(true, DATABASE_TABLE, ALL_KEYS,
                 where, null, null, null, null, null);
@@ -173,7 +176,17 @@ public class DBAdapter {
         return x;
     }
 
-//try 3
+    public Cursor getAllRows() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String today = sdf.format(new Date());
+        String where = KEY_CLICKED + "=" + today;
+        Cursor c = 	db.query(true, DATABASE_TABLE, ALL_KEYS,
+                where, null, null, null, null, null);
+        if (c != null) {
+            c.moveToFirst();
+        }
+        return c;
+    }
 
 
     // Get a specific row (by rowId)
