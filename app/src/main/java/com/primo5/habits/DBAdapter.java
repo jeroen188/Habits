@@ -153,6 +153,15 @@ public class DBAdapter {
         return c;
     }
 
+    public int getCount(String rowId) {
+     Cursor C =  db.rawQuery("select count {*} from mainTable where " + KEY_DIMENSION + " = " + rowId, null);
+    return C.getCount();
+    }
+
+
+
+
+
     // Get a specific row (by rowId)
     public Cursor getRow(long rowId) {
         String where = KEY_ROWID + "=" + rowId;

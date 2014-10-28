@@ -81,7 +81,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageButton2"
         android:layout_alignParentTop="true"
-        android:src="@drawable/forlife"
+        android:src="@drawable/forlife_360"
         android:layout_above="@+id/button3"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"

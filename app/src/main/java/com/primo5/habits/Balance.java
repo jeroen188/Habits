@@ -1,27 +1,41 @@
 package com.primo5.habits;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.DatabaseUtils;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+
 import org.achartengine.ChartFactory;
 import org.achartengine.model.CategorySeries;
 import org.achartengine.renderer.DefaultRenderer;
 import org.achartengine.renderer.SimpleSeriesRenderer;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.view.View;
 
-public class PieGraph extends Activity {
 
-    DBAdapter myDb;
+public class Balance extends Activity {
+static DBAdapter myDb;
+ public int dimensionPhysical= 1;
+    public int dimensionMental= 1;
+    public int dimensionSocial= 1;
+    public int dimensionSpirituality= 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_balance);
         openDB();
+        dimensionPhysical = myDb.getCount("Physical");
+        dimensionMental = myDb.getCount("Mental");
+        dimensionSocial = myDb.getCount("Social");
+        dimensionSpirituality = myDb.getCount("Spiritual");
     }
 
     @Override
@@ -33,6 +47,8 @@ public class PieGraph extends Activity {
     private void openDB() {
         myDb = new DBAdapter(this);
         myDb.open();
+
+
     }
 
     private void closeDB() {
@@ -43,6 +59,9 @@ public class PieGraph extends Activity {
      * UI Button Callbacks
      */
 
+    public void onClick_ClearAll(View v) {
+        myDb.deleteAll();
+    }
 
 
 
@@ -50,7 +69,8 @@ public class PieGraph extends Activity {
 
 
 
-        int[] values = {1, 2, 3, 4};
+
+        int[] values = {dimensionPhysical, dimensionMental, dimensionSocial, dimensionSpirituality};
         CategorySeries series = new CategorySeries("Pie Graph");
         int k = 0;
         for (int value : values) {

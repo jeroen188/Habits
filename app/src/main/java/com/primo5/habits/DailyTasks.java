@@ -1,34 +1,18 @@
 package com.primo5.habits;
 
 import android.app.Activity;
-import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 
 public class DailyTasks extends Activity {
 //
@@ -62,10 +46,7 @@ public class DailyTasks extends Activity {
      * UI Button Callbacks
      */
 
-    public void onClick_ClearAll(View v) {
-        myDb.deleteAll();
-        populateListViewFromDB();
-    }
+
 
 
     private void populateListViewFromDB() {
