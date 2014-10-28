@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -50,6 +51,7 @@ public class DimensionMental extends Activity {
             }
 
     public void addTask(View view) {
+
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.activity_new_task);
         dialog.setTitle("Add a new goal");
@@ -68,27 +70,33 @@ public class DimensionMental extends Activity {
 
 
 
-                dialog.dismiss();
-               EditText task = (EditText) findViewById(R.id.editTask);
-                Spinner dimension = (Spinner) findViewById(R.id.editDimension);
-                EditText description = (EditText) findViewById(R.id.editDescription);
-                Spinner subdimension = (Spinner) findViewById(R.id.editSubDimension);
 
+               EditText task = (EditText) dialog.findViewById(R.id.editTask);
+                String getTask = task.getText().toString();
 
-               String getTask = task.getText().toString();
+                Spinner dimension = (Spinner) dialog.findViewById(R.id.editDimension);
                 String getDimension = dimension.getSelectedItem().toString();
-               String getDescription = description.getText().toString();
-               String getSubdimension = subdimension.getSelectedItem().toString();
+
+                EditText description = (EditText) dialog.findViewById(R.id.editDescription);
+                String getDescription = description.getText().toString();
+
+                Spinner subdimension = (Spinner) dialog.findViewById(R.id.editSubDimension);
+                String getSubdimension = subdimension.getSelectedItem().toString();
+
+
+
+
+
 
                 myDb.insertRow(getTask, getDimension, getYesterdayDateString(), 0, 0, getDescription, getSubdimension);
                 //Toast.makeText(getApplicationContext(), "Task added!!! =)",
                 // Toast.LENGTH_LONG).show();
+                dialog.dismiss();
             }
         });
 
         dialog.show();
     }
-
 
 
     @Override
@@ -117,5 +125,6 @@ public class DimensionMental extends Activity {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, -1);
         return dateFormat.format(cal.getTime());
-    }}
+    }
+}
 
