@@ -54,7 +54,7 @@ public class DBAdapter {
     public static final String DATABASE_NAME = "MyDb";
     public static final String DATABASE_TABLE = "mainTable";
     // Track DB version if a new version of your app changes the format.
-    public static final int DATABASE_VERSION = 10;
+    public static final int DATABASE_VERSION = 11;
 
     private static final String DATABASE_CREATE_SQL =
             "create table " + DATABASE_TABLE
@@ -71,8 +71,8 @@ public class DBAdapter {
                     //  - "not null" means it is a required field (must be given a value).
                     // NOTE: All must be comma separated (end of line!) Last one must have NO comma!!
                     + KEY_TASK + " text not null, "
-                    + KEY_DIMENSION + " text not null, "
-                    + KEY_CLICKED + " text not null, "
+                    + KEY_DIMENSION + " string not null, "
+                    + KEY_CLICKED + " string not null, "
                     + KEY_TOTAL + " integer not null, "
                     + KEY_STREAK + " integer not null, "
                     + KEY_DESCRIPTION + " string not null, "
@@ -179,13 +179,17 @@ public class DBAdapter {
     public Cursor getAllRows() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String today = sdf.format(new Date());
-        String where = KEY_CLICKED + "=" + today;
+        String dimension= today;
+        String where = KEY_CLICKED + " !=?";
+        String[] args = { dimension };
+        Log.d(dimension,"the date of today");
         Cursor c = 	db.query(true, DATABASE_TABLE, ALL_KEYS,
-                where, null, null, null, null, null);
+                where, args, null, null, null, null);
         if (c != null) {
             c.moveToFirst();
         }
         return c;
+
     }
 
 

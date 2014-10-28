@@ -15,7 +15,12 @@ import android.widget.Spinner;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.view.View;
 import android.widget.AdapterView;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class NewTask extends Activity  {
@@ -44,23 +49,32 @@ public class NewTask extends Activity  {
     }
 
     public void Onclick_task(View v) {
-        EditText task = (EditText)findViewById(R.id.editTask);
-        Spinner dimension = (Spinner)findViewById(R.id.editDimension);
-        EditText description = (EditText)findViewById(R.id.editDescription);
-        Spinner subdimension = (Spinner)findViewById(R.id.editSubDimension);
+        EditText task = (EditText) findViewById(R.id.editTask);
+        Spinner dimension = (Spinner) findViewById(R.id.editDimension);
+        EditText description = (EditText) findViewById(R.id.editDescription);
+        Spinner subdimension = (Spinner) findViewById(R.id.editSubDimension);
 
         String getTask = task.getText().toString();
-        String getDimension= dimension.getSelectedItem().toString();
-        String getDescription= description.getText().toString();
-        String getSubdimension= subdimension.getSelectedItem().toString();
+        String getDimension = dimension.getSelectedItem().toString();
+        String getDescription = description.getText().toString();
+        String getSubdimension = subdimension.getSelectedItem().toString();
 
-        myDb.insertRow(getTask, getDimension, "", 1, 1, getDescription, getSubdimension);
+        myDb.insertRow(getTask, getDimension, getYesterdayDateString(), 0, 0, getDescription, getSubdimension);
         Toast.makeText(getApplicationContext(), "Task added!!! =)",
                 Toast.LENGTH_LONG).show();
+    }
+        public String getYesterdayDateString() {
+            DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            Calendar cal = Calendar.getInstance();
+            cal.add(Calendar.DATE, -1);
+            return dateFormat.format(cal.getTime());
+        }
+
+
 
     }
 
 
-    }
+
 
 

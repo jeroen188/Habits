@@ -12,6 +12,7 @@ import android.widget.Toast;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class DailyTasks extends Activity {
@@ -144,43 +145,28 @@ public class DailyTasks extends Activity {
             String description = cursor.getString(DBAdapter.COL_DESCRIPTION);
             String subdimension = cursor.getString(DBAdapter.COL_SUBDIMENSION);
 
-            //Define total checks based on todays time and the last update.
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-            String currentDateandTime =  new Date().toString();
-            Date test;
-            Date test2;
-            Long milliseconds = 0l;
-            Long milliseconds2= 0l;
-
-            try {
-                test = sdf.parse(currentDateandTime);
-                test2 = sdf.parse(clicked);
-                milliseconds = test.getTime();
-                milliseconds2= test2.getTime();
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-
-            if(!milliseconds.equals(milliseconds2))
-            {
-                total = total + 1;
-            }
-           // if(milliseconds - milliseconds2 == 1 )
-            //{
-             //   streak = streak +1;
-           // }
-           // if(milliseconds - milliseconds2 > 1 )
-           // {
-            //    streak = 0;
-            //}
 
             SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
             String datetoday = df.format(new Date());
+            total= total + 1;
+            if(getYesterdayDateString() == clicked) {
+                streak = streak + 1;
+            }
+            else {
+                streak = 0;
+            }
 
             myDb.updateRow(idInDB, task, dimension, datetoday, total, streak, description, subdimension);
         }
         cursor.close();
         populateListViewFromDB();
+    }
+
+    public String getYesterdayDateString() {
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -1);
+        return dateFormat.format(cal.getTime());
     }
 
     private void displayToastForId(long idInDB) {
