@@ -78,17 +78,40 @@ public class DailyTasks extends Activity {
                 {
                     String type = cursor.getString(columnIndex);
 
-                    ((View) view.getParent().getParent()).setBackgroundColor(Color.WHITE );
+                    //((View) view.getParent().getParent()).setBackgroundColor(Color.WHITE );
 
                     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
                     String currentDateandTime = sdf.format(new Date());
+
+
 
                     if (type.equals(currentDateandTime)) {
                         ((View) view.getParent().getParent()).setBackgroundColor(Color.LTGRAY );
                     }
 
                 }
+                if (view.getId() == R.id.textDimension)
+                {
+                    String type = cursor.getString(columnIndex);
+
+                    ((View) view.getParent().getParent()).setBackgroundColor(Color.WHITE );
+
+                    if (type.equals("Physical")) {
+                        ((View) view.getParent().getParent()).setBackgroundColor(Color.rgb(144,238,144) );
+                    }
+                    if (type.equals("Mental")) {
+                    ((View) view.getParent().getParent()).setBackgroundColor(Color.rgb(255,178,102) );
+                }
+                    if (type.equals("Social")) {
+                        ((View) view.getParent().getParent()).setBackgroundColor(Color.rgb(240,230,140) );
+                    }
+                    if (type.equals("Spiritual")) {
+                        ((View) view.getParent().getParent()).setBackgroundColor(Color.rgb(173,216,230) );
+                    }
+
+                }
                 return false;}
+
 
         });
         // Set the adapter for the list view
@@ -142,14 +165,14 @@ public class DailyTasks extends Activity {
             {
                 total = total + 1;
             }
-            if(milliseconds - milliseconds2 == 1 )
-            {
-                streak = streak +1;
-            }
-            if(milliseconds - milliseconds2 > 1 )
-            {
-                streak = 0;
-            }
+           // if(milliseconds - milliseconds2 == 1 )
+            //{
+             //   streak = streak +1;
+           // }
+           // if(milliseconds - milliseconds2 > 1 )
+           // {
+            //    streak = 0;
+            //}
 
             SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
             String datetoday = df.format(new Date());

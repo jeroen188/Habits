@@ -67,26 +67,28 @@ public class Balance extends Activity {
         myDb.deleteAll();
     }
 
+   public void onPause() {finish();}
 
     private void openChart() {
 
         // Pie Chart Section Names
         String[] code = new String[]{
-                "Eclair & Older", "Froyo", "Gingerbread", "Honeycomb"
+                "Physical", "Mental", "Social", "Spirituality"
         };
 
         // Pie Chart Section Value
         int[] distribution = {dimensionPhysical, dimensionMental, dimensionSocial, dimensionSpirituality};
 
         // Color of each Pie Chart Sections
-        int[] colors = {Color.BLUE, Color.MAGENTA, Color.GREEN, Color.CYAN};
+        int[] colors = {Color.rgb(144,238,144), Color.rgb(255,178,102), Color.rgb(240,230,140), Color.rgb(173,216,230)};
 
         // Instantiating CategorySeries to plot Pie Chart
         CategorySeries distributionSeries = new CategorySeries(" Android version distribution as on October 1, 2012");
         for (int i = 0; i < distribution.length; i++) {
             // Adding a slice with its values and name to the Pie Chart
             distributionSeries.add(code[i], distribution[i]);
-        }
+
+            }
 
         // Instantiating a renderer for the Pie Chart
         DefaultRenderer defaultRenderer = new DefaultRenderer();
@@ -96,14 +98,18 @@ public class Balance extends Activity {
             seriesRenderer.setDisplayChartValues(true);
             // Adding a renderer for a slice
             defaultRenderer.addSeriesRenderer(seriesRenderer);
-        }
+
+            defaultRenderer.setLabelsTextSize(60);
+            defaultRenderer.setLegendTextSize(40);
+                }
 
         defaultRenderer.setChartTitle("Android version distribution as on October 1, 2012 ");
         defaultRenderer.setChartTitleTextSize(20);
         defaultRenderer.setZoomButtonsVisible(true);
 
+
         // Creating an intent to plot bar chart using dataset and multipleRenderer
-        Intent intent = ChartFactory.getPieChartIntent(getBaseContext(), distributionSeries, defaultRenderer, "AChartEnginePieChartDemo");
+        Intent intent = ChartFactory.getPieChartIntent(getBaseContext(), distributionSeries, defaultRenderer, "Your LifeBalance");
 
         // Start Activity
         startActivity(intent);
