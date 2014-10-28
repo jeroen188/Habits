@@ -8,30 +8,34 @@
     <string name="title_activity_new_task">NewTask</string>
     <string name="title_activity_dimension_mental">DimensionMental</string>
     // Strings Mental Dimension    <string name="mentalHeader">Mental</string>
-    <string name="mentalPlanning">Planning</string>
-    <string name="mentalWork">Work</string>
-    <string name="mentalWriting">Writing</string>
-    <string name="mentalReading">Reading</string>
+    <string name="mentalPlanning">\u0020\u0020Planning</string>
+    <string name="mentalWork">\u0020\u0020Work</string>
+    <string name="mentalWriting">\u0020\u0020Writing</string>
+    <string name="mentalReading">\u0020\u0020Reading</string>
     // Strings Physical Dimension    <string name="physicalHeader">Physical</string>
-    <string name="physicalNutrition">Nutrition</string>
-    <string name="physicalExercise">Exercise</string>
-    <string name="physicalStressControl">StressControl</string>
-    // Strings Social Dimension    <string name="socialHeader">Social</string>
-    <string name="socialFamily">Family</string>
-    <string name="socialFriends">Friends</string>
-    <string name="socialLeisure">Leisure</string>
-    // Strings Spirituality    <string name="spiritualityHeader">Header</string>
-    <string name="spiritualityPray">Pray</string>
-    <string name="spiritualityMeditation">Meditation</string>
-    <string name="spiritualityMusic">Music</string>
-    <string name="spiritualityLiterature">Literature</string>
-    <string name="spiritualityNature">Nature</string>
-    // Strings Daily Task Overview    <string name="dailyOverview">Your tasks for today</string>
+    <string name="physicalNutrition">\u0020\u0020Nutrition</string>
+    <string name="physicalExercise">\u0020\u0020Exercise</string>
+    <string name="physicalStressControl">\u0020\u0020Stress\u0020Control</string>
+    // Strings Social Dimension
+    <string name="socialHeader">Social</string>
+    <string name="socialFamily">\u0020\u0020Family</string>
+    <string name="socialFriends">\u0020\u0020Friends</string>
+    <string name="socialLeisure">\u0020\u0020Leisure</string>
+    // Strings Spirituality
+    <string name="spiritualityHeader">Header</string>
+    <string name="spiritualityPray">\u0020\u0020Pray</string>
+    <string name="spiritualityMeditation">\u0020\u0020Meditation</string>
+    <string name="spiritualityMusic">\u0020\u0020Music</string>
+    <string name="spiritualityLiterature">\u0020\u0020Literature</string>
+    <string name="spiritualityNature">\u0020\u0020Nature</string>
+    // Strings Daily Task Overview
+    <string name="dailyOverview">Your tasks for today</string>
     <string name="title_activity_dimension_detail">DimensionDetail</string>
     <string name="title_activity_dimension_social">DimensionSocial</string>
     <string name="title_activity_dimension_physical">DimensionPhysical</string>
     <string name="title_activity_dimension_spirituality">DimensionSpirituality</string>
-    //Strings About    <string name="forlife">Header</string>
+    //Strings About
+    <string name="forlife">Header</string>
     <string name="title_activity_about">About</string>
 
     <string-array name="dimension_arrays">

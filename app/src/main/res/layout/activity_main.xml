@@ -19,7 +19,7 @@
     android:layout_alignParentTop="true"
     android:layout_toLeftOf="@+id/frameLayout"
     android:layout_toStartOf="@+id/frameLayout"
-    android:background="#ff17cc32"
+    android:background="#90EE90"
     android:onClick="sendPhysical"/>
 
     <FrameLayout
@@ -53,7 +53,7 @@
         android:layout_below="@+id/frameLayout"
         android:layout_toLeftOf="@+id/frameLayout"
         android:layout_toStartOf="@+id/frameLayout"
-        android:background="#ffcc8b1c"
+        android:background="#FFB266"
         android:onClick="sendMental"/>
 
     <Button
@@ -63,7 +63,7 @@
         android:layout_above="@+id/frameLayout"
         android:layout_toRightOf="@+id/frameLayout"
         android:layout_toEndOf="@+id/frameLayout"
-        android:background="#ff2c7bcc"
+        android:background="#ADD8E6"
         android:onClick="sendSpirituality"/>
 
     <Button
@@ -73,7 +73,7 @@
         android:layout_alignTop="@+id/button2"
         android:layout_toRightOf="@+id/frameLayout"
         android:layout_toEndOf="@+id/frameLayout"
-        android:background="#ffccc507"
+        android:background="#F0E68C"
         android:onClick="sendSocial"/>
 
 
@@ -82,7 +82,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageButton2"
         android:layout_alignParentTop="true"
-        android:src="@drawable/forlife_360"
+        android:src="@drawable/forlife"
         android:layout_above="@+id/button3"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
