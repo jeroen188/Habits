@@ -67,7 +67,6 @@ public class Balance extends Activity {
         myDb.deleteAll();
     }
 
-   public void onPause() {finish();}
 
     private void openChart() {
 
