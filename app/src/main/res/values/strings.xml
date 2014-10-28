@@ -48,10 +48,21 @@
     <string name="dimension_prompt">Choose a dimension</string>
 
     <string-array name="subdimension_arrays">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
+        <item>Planning</item>
+        <item>Work</item>
+        <item>Writing</item>
+        <item>Reading</item>
+        <item>Pray</item>
+        <item>Meditation</item>
+        <item>Music</item>
+        <item>Literature</item>
+        <item>Nature</item>
+        <item>Nutrition</item>
+        <item>Exercise</item>
+        <item>Stress control</item>
+        <item>Family</item>
+        <item>Friends</item>
+        <item>Leisure</item>
     </string-array>
 
     <string name="subdimension_prompt">Choose a dimension</string>
