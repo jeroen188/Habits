@@ -153,13 +153,27 @@ public class DBAdapter {
         return c;
     }
 
+    //try 1
     public int getCount(String rowId) {
      Cursor C =  db.rawQuery("select count {*} from mainTable where " + KEY_DIMENSION + " = " + rowId, null);
     return C.getCount();
     }
+    //try 2
+    public int GetTasksCountByCategory(String cat)
+    {
 
+        Cursor cur = db.rawQuery("SELECT Count(*) FROM mainTable where dimension = ?", new String[] { cat } );
+        int x = 0;
+        if (cur.moveToFirst())
+        {
+            x = cur.getInt(0);
+        }
 
+        cur.close();
+        return x;
+    }
 
+//try 3
 
 
     // Get a specific row (by rowId)

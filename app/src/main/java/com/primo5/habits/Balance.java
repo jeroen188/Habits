@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,22 +21,25 @@ import org.achartengine.renderer.SimpleSeriesRenderer;
 
 
 public class Balance extends Activity {
-static DBAdapter myDb;
- public int dimensionPhysical= 1;
-    public int dimensionMental= 1;
-    public int dimensionSocial= 1;
-    public int dimensionSpirituality= 1;
+    static DBAdapter myDb;
+    public int dimensionPhysical;
+    public int dimensionMental;
+    public int dimensionSocial;
+    public int dimensionSpirituality;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_balance);
+
         openDB();
-        dimensionPhysical = myDb.getCount("Physical");
-        dimensionMental = myDb.getCount("Mental");
-        dimensionSocial = myDb.getCount("Social");
-        dimensionSpirituality = myDb.getCount("Spiritual");
+
+        dimensionPhysical = myDb.GetTasksCountByCategory("Physical");
+        dimensionMental = myDb.GetTasksCountByCategory("Mental");
+        dimensionSocial = myDb.GetTasksCountByCategory("Social");
+        dimensionSpirituality = myDb.GetTasksCountByCategory("Spiritual");
+        openChart();
     }
 
     @Override
@@ -64,32 +68,47 @@ static DBAdapter myDb;
     }
 
 
+    private void openChart() {
 
-    public Intent getIntent(Context context) {
+        // Pie Chart Section Names
+        String[] code = new String[]{
+                "Eclair & Older", "Froyo", "Gingerbread", "Honeycomb"
+        };
 
+        // Pie Chart Section Value
+        int[] distribution = {dimensionPhysical, dimensionMental, dimensionSocial, dimensionSpirituality};
 
+        // Color of each Pie Chart Sections
+        int[] colors = {Color.BLUE, Color.MAGENTA, Color.GREEN, Color.CYAN};
 
-
-        int[] values = {dimensionPhysical, dimensionMental, dimensionSocial, dimensionSpirituality};
-        CategorySeries series = new CategorySeries("Pie Graph");
-        int k = 0;
-        for (int value : values) {
-            series.add("Section " + ++k, value);
+        // Instantiating CategorySeries to plot Pie Chart
+        CategorySeries distributionSeries = new CategorySeries(" Android version distribution as on October 1, 2012");
+        for (int i = 0; i < distribution.length; i++) {
+            // Adding a slice with its values and name to the Pie Chart
+            distributionSeries.add(code[i], distribution[i]);
         }
 
-        int[] colors = new int[]{Color.rgb(144, 238, 144), Color.rgb(173,216,230), Color.rgb(255,204,153), Color.rgb(240,204,153)};
-
-        DefaultRenderer renderer = new DefaultRenderer();
-        for (int color : colors) {
-            SimpleSeriesRenderer r = new SimpleSeriesRenderer();
-            r.setColor(color);
-            renderer.addSeriesRenderer(r);
+        // Instantiating a renderer for the Pie Chart
+        DefaultRenderer defaultRenderer = new DefaultRenderer();
+        for (int i = 0; i < distribution.length; i++) {
+            SimpleSeriesRenderer seriesRenderer = new SimpleSeriesRenderer();
+            seriesRenderer.setColor(colors[i]);
+            seriesRenderer.setDisplayChartValues(true);
+            // Adding a renderer for a slice
+            defaultRenderer.addSeriesRenderer(seriesRenderer);
         }
-        renderer.setChartTitle("Pie Chart Demo");
-        renderer.setChartTitleTextSize(7);
-        renderer.setZoomButtonsVisible(true);
 
-        Intent intent = ChartFactory.getPieChartIntent(context, series, renderer, "Pie");
-        return intent;
+        defaultRenderer.setChartTitle("Android version distribution as on October 1, 2012 ");
+        defaultRenderer.setChartTitleTextSize(20);
+        defaultRenderer.setZoomButtonsVisible(true);
+
+        // Creating an intent to plot bar chart using dataset and multipleRenderer
+        Intent intent = ChartFactory.getPieChartIntent(getBaseContext(), distributionSeries, defaultRenderer, "AChartEnginePieChartDemo");
+
+        // Start Activity
+        startActivity(intent);
+
     }
 }
+
+

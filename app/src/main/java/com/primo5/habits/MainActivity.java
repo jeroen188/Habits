@@ -22,11 +22,12 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-              return true;
+        return true;
     }
 
     @Override
@@ -40,6 +41,7 @@ public class MainActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     public void sendMessage(View view) {
         Intent intent = new Intent(this, DailyTasks.class);
         startActivity(intent);
@@ -49,6 +51,7 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(this, NewTask.class);
         startActivity(intent);
     }
+
     public void sendMental(View view) {
         Intent intent = new Intent(this, DimensionMental.class);
         startActivity(intent);
@@ -74,12 +77,10 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
-    public void sendBalance (View view)
-    {
-        Balance pie = new Balance();
-        Intent lineIntent = pie.getIntent(this);
-        startActivity(lineIntent);
+    public void sendBalance(View view) {
+        Intent intent = new Intent(this, Balance.class);
+        startActivity(intent);
+
+
     }
-
-
 }
