@@ -17,7 +17,7 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="67dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/socialHeader"
             android:id="@+id/socialHeader"
@@ -27,6 +27,22 @@
             android:textStyle="normal|italic"
             android:typeface="serif"
             android:textSize="35dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/balanceSocial"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/balanceSocialPercentage"
+            android:layout_gravity="center_horizontal" />
 
         <LinearLayout
             android:orientation="horizontal"

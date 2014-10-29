@@ -45,7 +45,7 @@ public class DimensionMental extends Activity {
         balance.setText("Currently " + String.valueOf(dimensionMental) + " active goals");
 
         final TextView balancePercentage= (TextView) findViewById(R.id.balanceMentalPercentage);
-        double dimensionTotals = 100 *(dimensionMental / (dimensionMental + dimensionPhysical + dimensionSocial + dimensionSpirituality));
+        double dimensionTotals = 100 *Math.ceil((dimensionMental / (dimensionMental + dimensionPhysical + dimensionSocial + dimensionSpirituality)));
         balancePercentage.setText("That is " + String.valueOf(dimensionTotals) + "% of your total goals");
 
             }
