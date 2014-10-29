@@ -10,23 +10,15 @@
     android:background="#00ffffff">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:background="#00ffffff">
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="65dp"
+            android:layout_height="74dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Spirituality"
             android:id="@+id/spiritualityHeader"
@@ -37,7 +29,8 @@
             android:textSize="35dp"
             android:textIsSelectable="false"
             android:typeface="serif"
-            android:textStyle="normal|italic" />
+            android:textStyle="normal|italic"
+            android:background="#00ffffff" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -45,20 +38,22 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Small Text"
             android:id="@+id/balanceSpirituality"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:background="#00ffffff" />
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="49dp"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Small Text"
             android:id="@+id/balanceSpiritualityPercentage"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:background="#00ffffff" />
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="72dp">
+            android:layout_height="64dp">
 
             <ImageButton
                 android:layout_width="25dp"
@@ -97,7 +92,7 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="72dp">
+            android:layout_height="64dp">
 
             <ImageButton
                 android:layout_width="25dp"
@@ -134,7 +129,7 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="72dp">
+            android:layout_height="64dp">
 
             <ImageButton
                 android:layout_width="25dp"
@@ -173,7 +168,7 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="72dp">
+            android:layout_height="64dp">
 
             <ImageButton
                 android:layout_width="25dp"
@@ -212,7 +207,7 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="72dp">
+            android:layout_height="64dp">
 
             <ImageButton
                 android:layout_width="25dp"
@@ -253,20 +248,19 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_gravity="right"
-            android:layout_marginLeft="200dp">
+            android:layout_marginRight="220dp">
 
 
             <ImageButton
-                android:layout_width="60dp"
+                android:layout_width="35dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/imageButton7"
-                android:src="@drawable/facebook"
+                android:src="@drawable/facebookbig"
                 android:adjustViewBounds="true"
                 android:baselineAlignBottom="false"
                 android:cropToPadding="false"
                 android:clickable="false"
                 android:focusable="false"
-                android:onClick="addTask"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="right"
@@ -274,16 +268,15 @@
                 android:focusableInTouchMode="false" />
 
             <ImageButton
-                android:layout_width="60dp"
+                android:layout_width="35dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/imageButton6"
-                android:src="@drawable/twitter"
+                android:src="@drawable/twitterbig"
                 android:adjustViewBounds="true"
                 android:baselineAlignBottom="false"
                 android:cropToPadding="false"
                 android:clickable="false"
                 android:focusable="false"
-                android:onClick="addTask"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="right"
@@ -291,8 +284,6 @@
         </LinearLayout>
 
     </LinearLayout>
-
-
 
 
 </RelativeLayout>
