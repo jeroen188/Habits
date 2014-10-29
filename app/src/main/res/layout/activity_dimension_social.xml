@@ -34,7 +34,9 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Small Text"
             android:id="@+id/balanceSocial"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:onClick="dimensionDetail"
+            android:clickable="true"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -42,7 +44,9 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Small Text"
             android:id="@+id/balanceSocialPercentage"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:onClick="dimensionDetail"
+            android:clickable="true"/>
 
         <LinearLayout
             android:orientation="horizontal"

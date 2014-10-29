@@ -16,8 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="org.achartengine.GraphicalActivity"
-           android:parentActivityName=".MainActivity" />
+        <activity
+            android:name="org.achartengine.GraphicalActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".DailyTasks"
             android:label="@string/title_activity_daily_tasks"
@@ -42,7 +43,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.primo5.habits.MainActivity" />
         </activity>
-
         <activity
             android:name=".DimensionSocial"
             android:label="@string/title_activity_dimension_social"
@@ -66,6 +66,10 @@
         <activity
             android:name=".Balance"
             android:label="@string/title_activity_balance" >
+        </activity>
+        <activity
+            android:name=".DimensionDetail"
+            android:label="@string/title_activity_dimension_detail" >
         </activity>
     </application>
 

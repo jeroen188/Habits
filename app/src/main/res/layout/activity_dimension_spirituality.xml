@@ -39,7 +39,9 @@
             android:text="Small Text"
             android:id="@+id/balanceSpirituality"
             android:layout_gravity="center_horizontal"
-            android:background="#00ffffff" />
+            android:background="#00ffffff"
+            android:onClick="dimensionDetail"
+            android:clickable="true"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -48,7 +50,9 @@
             android:text="Small Text"
             android:id="@+id/balanceSpiritualityPercentage"
             android:layout_gravity="center_horizontal"
-            android:background="#00ffffff" />
+            android:background="#00ffffff"
+            android:onClick="dimensionDetail"
+            android:clickable="true"/>
 
         <LinearLayout
             android:orientation="horizontal"

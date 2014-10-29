@@ -141,4 +141,10 @@ public class DimensionSpirituality extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public void dimensionDetail(View view) {
+        Intent intent = new Intent(this, DimensionDetail.class);
+        intent.putExtra("dimensionString", "Spiritual");
+        startActivity(intent);
+    }
 }

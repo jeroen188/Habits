@@ -148,4 +148,11 @@ public class DimensionPhysical extends Activity {
         super.onBackPressed();
         finish();
     }
+    public void dimensionDetail(View view) {
+        Intent intent = new Intent(this, DimensionDetail.class);
+        intent.putExtra("dimensionString", "Physical");
+        startActivity(intent);
+
+
+    }
 }

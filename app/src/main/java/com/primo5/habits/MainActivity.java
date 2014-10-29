@@ -87,9 +87,8 @@ public class MainActivity extends Activity {
     public void sendBalance(View view) {
         Intent intent = new Intent(this, Balance.class);
         startActivity(intent);
-
-
     }
+
     public void addTask(View view) {
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.activity_new_task);

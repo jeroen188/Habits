@@ -192,6 +192,21 @@ public class DBAdapter {
 
     }
 
+    public Cursor getAllRows2(String dimension) {
+        String where = KEY_DIMENSION + " =?";
+        String[] args = { dimension };
+        Log.d(dimension,"the dimension");
+        Cursor c = 	db.query(true, DATABASE_TABLE, ALL_KEYS,
+                where, args, null, null, null, null);
+        if (c != null) {
+            c.moveToFirst();
+        }
+        return c;
+
+    }
+
+
+
 
     // Get a specific row (by rowId)
     public Cursor getRow(long rowId) {
