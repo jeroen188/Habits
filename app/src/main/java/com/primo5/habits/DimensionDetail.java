@@ -94,7 +94,7 @@ String dimension;
                 {
                     String type = cursor.getString(columnIndex);
 
-                    //((View) view.getParent().getParent()).setBackgroundColor(Color.WHITE );
+                    ((View) view.getParent().getParent()).setBackgroundColor(Color.WHITE );
 
                     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
                     String currentDateandTime = sdf.format(new Date());
@@ -106,7 +106,7 @@ String dimension;
                     //}
 
                 }
-                if (view.getId() == R.id.textDimension)
+                /*if (view.getId() == R.id.textDimension)
                 {
                     String type = cursor.getString(columnIndex);
 
@@ -125,7 +125,7 @@ String dimension;
                         ((View) view.getParent().getParent()).setBackgroundColor(Color.rgb(173,253,236) );
                     }
 
-                }
+                }*/
                 return false;}
 
 
