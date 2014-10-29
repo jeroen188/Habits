@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
@@ -30,10 +31,14 @@ public class DimensionMental extends Activity {
     public double dimensionSocial;
     public double dimensionSpirituality;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dimension_mental);
+
 
         openDB();
         dimensionPhysical = myDb.GetTasksCountByCategory("Physical");
