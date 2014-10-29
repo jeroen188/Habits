@@ -42,7 +42,7 @@ public class DimensionPhysical extends Activity {
         balance.setText("Currently " + String.valueOf(dimensionPhysical) + " active goals");
 
         final TextView balancePercentage= (TextView) findViewById(R.id.balancePhysicalPercentage);
-        double dimensionTotals = 100 *Math.ceil((dimensionPhysical / (dimensionMental + dimensionPhysical + dimensionSocial + dimensionSpirituality)));
+        double dimensionTotals = Math.ceil(100 *(dimensionPhysical / (dimensionMental + dimensionPhysical + dimensionSocial + dimensionSpirituality)));
         balancePercentage.setText("That is " + String.valueOf(dimensionTotals) + "% of your total goals");
 
     }

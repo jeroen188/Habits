@@ -42,7 +42,7 @@ public class DimensionSpirituality extends Activity {
         balance.setText("Currently " + String.valueOf(dimensionSpirituality) + " active goals");
 
         final TextView balancePercentage= (TextView) findViewById(R.id.balanceSpiritualityPercentage);
-        double dimensionTotals = 100 *Math.ceil((dimensionSpirituality / (dimensionMental + dimensionPhysical + dimensionSocial + dimensionSpirituality)));
+        double dimensionTotals = Math.ceil(100 *(dimensionSpirituality / (dimensionMental + dimensionPhysical + dimensionSocial + dimensionSpirituality)));
         balancePercentage.setText("That is " + String.valueOf(dimensionTotals) + "% of your total goals");
 
     }

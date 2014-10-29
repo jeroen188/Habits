@@ -4,10 +4,15 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -98,16 +103,16 @@ public class DailyTasks extends Activity {
                     ((View) view.getParent().getParent()).setBackgroundColor(Color.WHITE );
 
                     if (type.equals("Physical")) {
-                        ((View) view.getParent().getParent()).setBackgroundColor(Color.rgb(144,238,144) );
+                        ((View) view.getParent().getParent()).setBackgroundColor(Color.rgb(216,253,210) );
                     }
                     if (type.equals("Mental")) {
-                    ((View) view.getParent().getParent()).setBackgroundColor(Color.rgb(255,178,102) );
+                    ((View) view.getParent().getParent()).setBackgroundColor(Color.rgb(255,183,125) );
                 }
                     if (type.equals("Social")) {
-                        ((View) view.getParent().getParent()).setBackgroundColor(Color.rgb(240,230,140) );
+                        ((View) view.getParent().getParent()).setBackgroundColor(Color.rgb(254,244,185) );
                     }
                     if (type.equals("Spiritual")) {
-                        ((View) view.getParent().getParent()).setBackgroundColor(Color.rgb(173,216,230) );
+                        ((View) view.getParent().getParent()).setBackgroundColor(Color.rgb(173,253,236) );
                     }
 
                 }
@@ -177,13 +182,38 @@ public class DailyTasks extends Activity {
             String dimension = cursor.getString(DBAdapter.COL_DIMENSION);
             String description = cursor.getString(DBAdapter.COL_DESCRIPTION);
             String subdimension = cursor.getString(DBAdapter.COL_SUBDIMENSION);
+            String total = cursor.getString(DBAdapter.COL_TOTAL);
+            String streak = cursor.getString(DBAdapter.COL_STREAK);
 
-            String message = "ID: " + idDB + "\n"
+            // get your custom_toast.xml layout
+            LayoutInflater inflater = getLayoutInflater();
+
+            View layout = inflater.inflate(R.layout.custom_toast,
+                    (ViewGroup) findViewById(R.id.custom_toast_layout_id));
+
+            // set a dummy image
+            ImageView image = (ImageView) layout.findViewById(R.id.image);
+            image.setImageResource(R.drawable.ic_check_image);
+
+            // set a message
+            TextView text = (TextView) layout.findViewById(R.id.textTotal);
+            text.setText("Well done!"+"\n"+
+                    "Total check ins: "+total+ "\n"
+                   +"Streak: "+streak);
+
+            // Toast...
+            Toast toast = new Toast(getApplicationContext());
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setView(layout);
+            toast.show();
+
+            /*String message = "ID: " + idDB + "\n"
                     + "Task: " + task + "\n"
                     + "Dimension: " + dimension + "\n"
                     + "Subdimension: " + subdimension + "\n"
                     + "Description: " + description;
-            Toast.makeText(DailyTasks.this, message, Toast.LENGTH_LONG).show();
+            Toast.makeText(DailyTasks.this, message, Toast.LENGTH_LONG).show();*/
         }
         cursor.close();
     }

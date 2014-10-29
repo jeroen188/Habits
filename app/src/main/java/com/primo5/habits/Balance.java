@@ -79,7 +79,7 @@ public class Balance extends Activity {
         int[] distribution = {dimensionPhysical, dimensionMental, dimensionSocial, dimensionSpirituality};
 
         // Color of each Pie Chart Sections
-        int[] colors = {Color.rgb(144,238,144), Color.rgb(255,178,102), Color.rgb(240,230,140), Color.rgb(173,216,230)};
+        int[] colors = {Color.rgb(216,253,210), Color.rgb(255,183,125), Color.rgb(254,244,185), Color.rgb(173,253,236)};
 
         // Instantiating CategorySeries to plot Pie Chart
         CategorySeries distributionSeries = new CategorySeries(" Android version distribution as on October 1, 2012");
