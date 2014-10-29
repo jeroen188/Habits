@@ -126,7 +126,7 @@ public class MainActivity extends Activity {
 
 
 
-                myDb.insertRow(getTask, getDimension, getYesterdayDateString(), 0, 0, getDescription, getSubdimension);
+                myDb.insertRow(getTask, getDimension, "25-10-2014", 5, 4, getDescription, getSubdimension);
                 Toast.makeText(getApplicationContext(), "Task added!!! =)",
                         Toast.LENGTH_LONG).show();
                 dialog.dismiss();

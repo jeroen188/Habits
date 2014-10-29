@@ -40,14 +40,17 @@
 
     <string-array name="dimension_arrays">
         <item>Physical</item>
+        <item>Social</item>
         <item>Spiritual</item>
         <item>Mental</item>
-        <item>Social</item>
     </string-array>
 
     <string name="dimension_prompt">Choose a dimension</string>
 
     <string-array name="subdimension_arrays">
+        <item>Family</item>
+        <item>Friends</item>
+        <item>Leisure</item>
         <item>Planning</item>
         <item>Work</item>
         <item>Writing</item>
@@ -60,9 +63,7 @@
         <item>Nutrition</item>
         <item>Exercise</item>
         <item>Stress control</item>
-        <item>Family</item>
-        <item>Friends</item>
-        <item>Leisure</item>
+
     </string-array>
 
     <string name="subdimension_prompt">Choose a dimension</string>

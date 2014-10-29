@@ -59,7 +59,7 @@ public class NewTask extends Activity  {
         String getDescription = description.getText().toString();
         String getSubdimension = subdimension.getSelectedItem().toString();
 
-        myDb.insertRow(getTask, getDimension, getYesterdayDateString(), 0, 0, getDescription, getSubdimension);
+        myDb.insertRow(getTask, getDimension, "26-10-2014", 2, 2, getDescription, getSubdimension);
         Toast.makeText(getApplicationContext(), "Task added!!! =)",
                 Toast.LENGTH_LONG).show();
     }
