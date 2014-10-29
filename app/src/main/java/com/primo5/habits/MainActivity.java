@@ -132,13 +132,13 @@ public class MainActivity extends Activity {
                 dialog.dismiss();
             }
         });
-
+closeDB();
         dialog.show();
     }
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        closeDB();
+       // closeDB();
     }
 
     private void openDB() {
