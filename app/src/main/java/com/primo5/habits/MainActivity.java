@@ -25,11 +25,12 @@ import java.util.Calendar;
 public class MainActivity extends Activity {
     final Context context = this;
     static DBAdapter myDb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        openDB();
     }
 
     @Override
@@ -105,7 +106,7 @@ public class MainActivity extends Activity {
         dialogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            openDB();
+
 
 
 
@@ -132,15 +133,16 @@ public class MainActivity extends Activity {
                 dialog.dismiss();
             }
         });
-closeDB();
+
         dialog.show();
+
     }
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        closeDB();
        // closeDB();
     }
-
     private void openDB() {
         myDb = new DBAdapter(this);
         myDb.open();
